@@ -66,7 +66,7 @@ src/
 
 Además, los favoritos se guardan en `localStorage` con un hook propio (`useFavoritos`) y solo con los datos que necesita la tarjeta (id, nombre, imagen, estado y especie), así no se guarda el personaje completo.
 
-**Uso de IA. El proyecto lo genere con una IA a partir de los requisitos del parcial: los componentes, los hooks (`useFetch` y `useFavoritos`), las rutas y el CSS. Los commits también se armaron con su ayuda ya que es la primera vez que uso git.
+**Uso de IA**. El proyecto lo genere con una IA a partir de los requisitos del parcial: los componentes, los hooks (`useFetch` y `useFavoritos`), las rutas y el CSS. Los commits también se armaron con su ayuda ya que es la primera vez que uso git.
 
 ## Autor
 
