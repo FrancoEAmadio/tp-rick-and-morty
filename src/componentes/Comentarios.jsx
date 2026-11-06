@@ -2,12 +2,23 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { supabase } from '../api/supabase'
 import { useSesion } from '../hooks/useSesion'
+import { useDictado } from '../hooks/useDictado'
+
+const ESTADOS_PERMISO = {
+  granted: 'permitido',
+  denied: 'bloqueado',
+  prompt: 'se pedirá al dictar',
+  desconocido: 'sin consultar',
+}
 
 export default function Comentarios({ personajeId }) {
   const { usuario } = useSesion()
   const [comentarios, setComentarios] = useState([])
   const [texto, setTexto] = useState('')
   const [error, setError] = useState(null)
+  const dictado = useDictado((dicho) =>
+  setTexto((actual) => (actual ? `${actual} ${dicho}` : dicho))
+)
 
   useEffect(() => {
     if (!usuario) return
@@ -93,16 +104,38 @@ export default function Comentarios({ personajeId }) {
         <>
           <form className="formulario" onSubmit={enviar}>
             <label>
-              Tu comentario
-              <textarea
+                Tu comentario
+                <textarea
                 value={texto}
                 onChange={(e) => setTexto(e.target.value)}
                 maxLength={280}
                 required
-              />
+                />
             </label>
+
+            {dictado.soportado ? (
+                <>
+                <button
+                    type="button"
+                    className="boton boton-secundario"
+                    onClick={dictado.escuchando ? dictado.detener : dictado.iniciar}
+                >
+                    {dictado.escuchando ? 'Escuchando... (tocá para parar)' : 'Dictar con el micrófono'}
+                </button>
+                <small>Micrófono: {ESTADOS_PERMISO[dictado.permiso] ?? dictado.permiso}</small>
+                </>
+            ) : (
+                <p>Tu navegador no permite dictar por voz.</p>
+            )}
+
+            {(dictado.error || dictado.permiso === 'denied') && (
+                <p className="mensaje-error" role="alert">
+                {dictado.error ?? 'El micrófono está bloqueado. Habilitalo desde el candado de la barra de direcciones.'}
+                </p>
+            )}
+
             <button type="submit" className="boton boton-principal">Comentar</button>
-          </form>
+            </form>
 
           {error && <p className="mensaje-error" role="alert">{error}</p>}
 
