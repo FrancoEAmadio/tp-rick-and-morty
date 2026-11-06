@@ -1,10 +1,18 @@
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router'
+import { useSesion } from '../hooks/useSesion'
+import { supabase } from '../api/supabase'
+
 
 const TITULO = import.meta.env.VITE_TITULO
 
 export default function Layout() {
   const { pathname } = useLocation()
+  const { usuario } = useSesion()
+
+async function salir() {
+  await supabase.auth.signOut()
+}
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -18,6 +26,14 @@ export default function Layout() {
           <NavLink to="/" end>Inicio</NavLink>
           <NavLink to="/personajes">Personajes</NavLink>
           <NavLink to="/favoritos">Favoritos</NavLink>
+         {usuario ? (
+  <>
+    <span>{usuario.email}</span>
+    <button type="button" onClick={salir}>Salir</button>
+  </>
+) : (
+  <NavLink to="/acceso">Ingresar</NavLink>
+)} 
         </nav>
       </header>
 

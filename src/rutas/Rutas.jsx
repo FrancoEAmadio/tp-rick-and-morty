@@ -4,6 +4,7 @@ import Inicio from '../paginas/Inicio'
 import Personajes from '../paginas/Personajes'
 import DetallePersonaje from '../paginas/DetallePersonaje'
 import Favoritos from '../paginas/Favoritos'
+import Acceso from '../paginas/Acceso'
 import NoEncontrado from '../paginas/NoEncontrado'
 
 export default function Rutas() {
@@ -14,6 +15,7 @@ export default function Rutas() {
         <Route path="personajes" element={<Personajes />} />
         <Route path="personajes/:id" element={<DetallePersonaje />} />
         <Route path="favoritos" element={<Favoritos />} />
+        <Route path="acceso" element={<Acceso />} />
         <Route path="*" element={<NoEncontrado />} />
       </Route>
     </Routes>
