@@ -5,6 +5,7 @@ import { urlDetalle } from '../api/personajes'
 import { traducirEstado, traducirEspecie, traducirGenero } from '../api/traducciones'
 import BotonFavorito from '../componentes/BotonFavorito'
 import EstadoDatos from '../componentes/EstadoDatos'
+import Comentarios from '../componentes/Comentarios'
 import NoEncontrado from './NoEncontrado'
 
 export default function DetallePersonaje() {
@@ -74,6 +75,7 @@ export default function DetallePersonaje() {
           </article>
         )}
       </EstadoDatos>
+      <Comentarios personajeId={id} />
     </main>
   )
 }

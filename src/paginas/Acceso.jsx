@@ -36,11 +36,11 @@ export default function Acceso() {
     navigate('/personajes')
   }
 
-  return (
-    <main>
-      <h1>{modo === 'entrar' ? 'Ingresar' : 'Crear cuenta'}</h1>
+    return (
+    <main className="acceso">
+      <h1 className="titulo-pagina">{modo === 'entrar' ? 'Ingresar' : 'Crear cuenta'}</h1>
 
-      <form onSubmit={manejarEnvio}>
+      <form className="formulario" onSubmit={manejarEnvio}>
         <label>
           Email
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -50,15 +50,19 @@ export default function Acceso() {
           <input type="password" value={clave} onChange={(e) => setClave(e.target.value)} required minLength={6} />
         </label>
 
-        {error && <p role="alert">{error}</p>}
+        {error && <p className="mensaje-error" role="alert">{error}</p>}
         {aviso && <p role="status">{aviso}</p>}
 
-        <button type="submit" disabled={enviando}>
+        <button type="submit" className="boton boton-principal boton-bloque" disabled={enviando}>
           {enviando ? 'Enviando...' : modo === 'entrar' ? 'Ingresar' : 'Registrarme'}
         </button>
       </form>
 
-      <button type="button" onClick={() => setModo(modo === 'entrar' ? 'registrar' : 'entrar')}>
+      <button
+        type="button"
+        className="boton boton-secundario"
+        onClick={() => setModo(modo === 'entrar' ? 'registrar' : 'entrar')}
+      >
         {modo === 'entrar' ? '¿No tenés cuenta? Registrate' : '¿Ya tenés cuenta? Ingresá'}
       </button>
     </main>

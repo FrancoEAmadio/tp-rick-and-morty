@@ -814,3 +814,131 @@ button {
     animation: none;
   }
 }
+
+.acceso {
+  display: grid;
+  align-content: start;
+  gap: 1.2rem;
+  width: min(100%, 28rem);
+  margin-inline: auto;
+  padding: 2.5rem var(--margen);
+}
+
+.acceso .titulo-pagina {
+  margin: 0;
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+}
+
+.formulario {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.formulario label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--gris);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--linea);
+  border-radius: 0.8rem;
+  background: var(--carbon);
+  color: var(--texto);
+  font: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.formulario textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  outline: 2px solid var(--verde);
+  outline-offset: 2px;
+}
+
+.mensaje-error {
+  color: var(--rojo);
+}
+
+.comentarios {
+  display: grid;
+  gap: 1rem;
+  justify-self: stretch;
+  width: 100%;
+  max-width: 40rem;
+  margin-top: 2.5rem;
+}
+
+.comentarios .formulario .boton {
+  justify-self: start;
+}
+
+.lista-comentarios {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-comentarios li {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  background: var(--carbon);
+}
+
+.lista-comentarios p {
+  margin: 0;
+}
+
+.lista-comentarios small {
+  color: var(--gris);
+}
+
+.lista-comentarios .boton {
+  justify-self: start;
+  min-height: 2.25rem;
+  margin-top: 0.4rem;
+  padding: 0 1rem;
+}
+
+.nav-principal {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-correo {
+  max-width: 11rem;
+  padding-inline: 0.5rem;
+  overflow: hidden;
+  color: var(--gris);
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-principal .boton {
+  min-height: 2.25rem;
+  padding: 0 1rem;
+  font-size: 0.72rem;
+}
+
+.header-principal {
+  background: var(--negro);
+}
